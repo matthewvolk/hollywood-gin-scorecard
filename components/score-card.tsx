@@ -21,8 +21,15 @@ export default function ScoreCard({
   totalScores,
   gamesCompleted,
 }: ScoreCardProps) {
-  // Generate rows for 20 possible hands
-  const handRows = Array.from({ length: 20 }, (_, i) => i + 1);
+  // Calculate the maximum number of hands played across all games
+  const maxHandsPlayed = Math.max(
+    ...gameScores.map((game) =>
+      Math.max(game.player1.length, game.player2.length),
+    ),
+  );
+
+  // Generate rows for the actual number of hands played
+  const handRows = Array.from({ length: maxHandsPlayed }, (_, i) => i + 1);
 
   return (
     <Card>
@@ -35,7 +42,7 @@ export default function ScoreCard({
             {/* Header Rows */}
             <thead>
               <tr>
-                <th className="w-12 border-b border-r bg-muted p-2 text-center font-medium">
+                <th className="w-12 border-b border-r p-2 text-center font-medium">
                   {/* Empty cell - removed "Player" text */}
                 </th>
                 {[1, 2, 3].map((gameNum) => (
@@ -52,7 +59,7 @@ export default function ScoreCard({
                 ))}
               </tr>
               <tr>
-                <th className="w-12 border-b border-r bg-muted p-2 text-center font-medium">
+                <th className="w-12 border-b border-r p-2 text-center font-medium">
                   Hand
                 </th>
                 {[1, 2, 3].map((gameNum) => (
@@ -81,8 +88,8 @@ export default function ScoreCard({
             {/* Score Grid */}
             <tbody>
               {handRows.map((handNum) => (
-                <tr className="group" key={handNum}>
-                  <td className="w-12 border-b border-r bg-background p-2 text-center font-medium text-muted-foreground group-hover:bg-muted/50">
+                <tr key={handNum}>
+                  <td className="w-12 border-b border-r bg-background p-2 text-center font-medium text-muted-foreground">
                     {handNum}
                   </td>
                   {[0, 1, 2].map((gameIndex) => {
@@ -98,7 +105,6 @@ export default function ScoreCard({
                           className={cn(
                             "border-b border-r p-2 text-center",
                             gamesCompleted[gameIndex] && "bg-primary/5",
-                            "group-hover:bg-muted/50",
                           )}
                         >
                           {hasScore
@@ -109,7 +115,6 @@ export default function ScoreCard({
                           className={cn(
                             "border-b border-r p-2 text-center",
                             gamesCompleted[gameIndex] && "bg-primary/5",
-                            "group-hover:bg-muted/50",
                           )}
                         >
                           {hasScore
@@ -124,9 +129,7 @@ export default function ScoreCard({
 
               {/* Game Totals Row */}
               <tr className="font-bold">
-                <td className="w-12 border-b border-r bg-muted p-2 text-center">
-                  GAME
-                </td>
+                <td className="w-12 border-b border-r p-2 text-center">GAME</td>
                 {totalScores.map((scores, gameIndex) => (
                   <React.Fragment key={gameIndex}>
                     <td

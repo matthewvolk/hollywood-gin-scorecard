@@ -76,7 +76,7 @@ export default function GameTracker({
         )}
       </CardContent>
       <CardFooter>
-        <Button className="w-full" onClick={onResetGame} variant="outline">
+        <Button className="w-full" onClick={onResetGame} variant="destructive">
           Reset Game
         </Button>
       </CardFooter>
