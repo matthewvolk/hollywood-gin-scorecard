@@ -75,8 +75,14 @@ export default function GameDashboard({ players }: GameDashboardProps) {
       GameScores,
       GameScores,
     ];
-    const newGamesCompleted = [...gamesCompleted];
-    const newGamesWon = [...gamesWon];
+
+    const newGamesCompleted = [...gamesCompleted] as [
+      boolean,
+      boolean,
+      boolean,
+    ];
+
+    const newGamesWon = [...gamesWon] as [number, number];
 
     // Apply the Hollywood Gin scoring rules
     if (winner === 0) {
@@ -212,7 +218,6 @@ export default function GameDashboard({ players }: GameDashboardProps) {
       <ScoreCard
         gameScores={gameScores}
         gamesCompleted={gamesCompleted}
-        hands={hands}
         players={players}
         totalScores={totalScores}
       />

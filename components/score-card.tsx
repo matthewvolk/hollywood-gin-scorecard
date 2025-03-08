@@ -3,12 +3,6 @@ import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-interface Hand {
-  id: number;
-  scores: [number, number];
-  winner: number | null;
-}
-
 interface GameScores {
   player1: number[];
   player2: number[];
@@ -16,7 +10,6 @@ interface GameScores {
 
 interface ScoreCardProps {
   players: [string, string];
-  hands: Hand[];
   gameScores: [GameScores, GameScores, GameScores];
   totalScores: number[][];
   gamesCompleted: boolean[];
@@ -24,7 +17,6 @@ interface ScoreCardProps {
 
 export default function ScoreCard({
   players,
-  hands,
   gameScores,
   totalScores,
   gamesCompleted,
