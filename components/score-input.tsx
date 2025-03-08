@@ -89,6 +89,7 @@ export default function ScoreInput({
                 id="player1Score"
                 min="0"
                 onChange={handlePlayer1ScoreChange}
+                pattern="\d*"
                 placeholder="Score"
                 ref={player1InputRef}
                 type="number"
@@ -104,6 +105,7 @@ export default function ScoreInput({
                 id="player2Score"
                 min="0"
                 onChange={handlePlayer2ScoreChange}
+                pattern="\d*"
                 placeholder="Score"
                 ref={player2InputRef}
                 type="number"
