@@ -50,6 +50,7 @@ export default function PlayerSetup({ onStartGame }: PlayerSetupProps) {
               Player 1
             </label>
             <Input
+              autoFocus
               id="player1"
               onChange={(e) => setPlayer1(e.target.value)}
               placeholder="Enter name"
