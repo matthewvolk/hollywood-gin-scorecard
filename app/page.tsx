@@ -18,7 +18,7 @@ export default function Home() {
     <main className="min-h-screen bg-background p-4 md:p-8">
       <div className="mx-auto max-w-4xl">
         <h1 className="mb-8 text-center text-3xl font-bold">
-          Hollywood Gin Scorekeeper
+          Hollywood Gin Scorecard
         </h1>
 
         {!gameStarted ? (
